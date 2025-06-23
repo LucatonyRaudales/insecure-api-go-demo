@@ -7,11 +7,10 @@ import (
 
 func main() {
 	r := gin.Default()
+	user.Init()
 
-	// Rutas inseguras
 	user.RegisterRoutes(r)
-	// Rutas seguras (v2)
 	user.RegisterSecureRoutes(r)
 
-	r.Run(":8080") // http://localhost:8080
+	r.Run(":8080") 
 }
