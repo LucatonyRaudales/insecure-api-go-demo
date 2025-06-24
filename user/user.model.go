@@ -8,7 +8,9 @@ type User struct {
 	Token    string `json:"token"`
 }
 
-var Users = []User{
-	{1, "Alice", "alice@example.com", "123456", "tok_alice"},
-	{2, "Bob", "bob@example.com", "password", "tok_bob"},
+var UnsecureUsers = []User{
+	{ID: 1, Name: "Alice", Email: "alice@example.com", Password: "123456", Token: "tok_alice"},
+	{ID: 2, Name: "Bob", Email: "bob@example.com", Password: "password", Token: "tok_bob"},
 }
+
+var Users = []User{}

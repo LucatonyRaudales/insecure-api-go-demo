@@ -10,13 +10,13 @@ import (
 var Comments []string
 
 func GetAllUsers(c *gin.Context) {
-	c.JSON(http.StatusOK, Users)
+	c.JSON(http.StatusOK, UnsecureUsers)
 }
 
 func SearchUser(c *gin.Context) {
 	q := c.Query("name")
 	var results []User
-	for _, u := range Users {
+	for _, u := range UnsecureUsers {
 		if strings.Contains(strings.ToLower(u.Name), strings.ToLower(q)) {
 			results = append(results, u)
 		}
@@ -36,7 +36,7 @@ func LoginUser(c *gin.Context) {
 		return
 	}
 
-	for _, u := range Users {
+	for _, u := range UnsecureUsers {
 		if u.Email == creds.Email && u.Password == creds.Password {
 			c.JSON(http.StatusOK, gin.H{"token": u.Token})
 			return

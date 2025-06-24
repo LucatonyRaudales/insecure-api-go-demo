@@ -71,7 +71,6 @@ const maxLoginAttempts = 5
 const lockoutDuration = 5 * time.Minute // Lock out for 5 minutes
 
 func Init() {
-    // Helper to hash passwords (for demonstration setup)
     hashPassword := func(password string) (string, error) {
         hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
         if err != nil {
@@ -80,7 +79,6 @@ func Init() {
         return string(hashedPassword), nil
     }
 
-    // Securely add users to our in-memory store
     hashedPassAlice, err := hashPassword("password123")
     if err != nil {
         log.Fatalf("Error hashing Alice's password: %v", err)
